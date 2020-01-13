@@ -1,0 +1,186 @@
+{%extends 'base.html'%}
+
+
+{%block content%}
+<!DOCTYPE html>
+
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<style>
+
+{%load static%}
+{%static "clave.jpg" as clave %}
+{%static "smile.png" as smile%}
+td {
+	background: url({{clave}});
+  background-size:cover;
+  background-repeat: no-repeat;
+	background-blend-mode:exclusion;
+	width: 10%;
+	height: 30%;
+	border-width: medium;
+	border-radius:10px;
+	border-width:5px;
+	border-bottom-style:outset;
+}
+.tabela{
+	height:100%;
+	width:100%;
+}
+.carta {
+	background:blue;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	border-width: medium;
+	border-radius:10px;
+}
+.divisao{
+	position:top;
+	padding-right: 0px;
+	padding-left:0px;
+	background-color: black;
+	border-bottom-right-radius:20px;
+	border-bottom-left-radius:20px;
+	border-top-right-radius:20px;
+	border-top-left-radius:20px;
+	padding-bottom: 10%;
+}
+.botao{
+  position:bottom;
+	background-color:grey;
+	color:white;
+  width:100%;
+	padding-bottom:20px;
+	border-top-right-radius:20px;
+	border-top-left-radius:20px;
+}
+.divisao2{
+	position:bottom;
+	background-color: black;
+	border-top-right-radius:20px;
+	border-top-left-radius:20px;
+}
+.esconde{
+	visibility:hidden;
+}
+</style>
+<script>
+var primeiraCarta = null;
+var segundaCarta = null;
+var numPares = 7;
+var acertos = 0;
+function init(bot){
+	if (document.getElementById("bot").value =='0'){
+		document.getElementById("bot").setAttribute('value','1');
+		var jogo = document.getElementById('escondido');
+		jogo.style.visibility = 'visible';
+//definindo e recolhendo as imagens do staticfiles
+//por padrao irie nomealos de abcdefg
+		{%static "a.jpg" as a %}
+		{%static "b.jpg" as b %}
+		{%static "c.jpg" as c %}
+		{%static "d.jpg" as d %}
+		{%static "e.jpg" as e %}
+		{%static "f.jpg" as f %}
+		{%static "g.jpg" as g %}
+		var imagens = ['{{a}}',"{{b}}","{{c}}","{{d}}","{{e}}","{{f}}","{{g}}",
+		'{{a}}',"{{b}}","{{c}}","{{d}}","{{e}}","{{f}}","{{g}}"];
+		var b = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+		var val =[1,2,3,4,5,6,7];
+		bot.innerHTML="PODE JOGAR!!";
+		//butao.setAttribute.color=black;
+		count = 0;
+		b.sort(function(a, b){return 0.5 - Math.random()});
+		for (i in b){
+			var linha = document.getElementById(b[i]);
+			linha.setAttribute("valor", imagens[i]);
+			linha.src = imagens[count];
+			//linha.setAttribute("valor", i);
+			if (linha.getAttribute.valor == "do.jpg"){linha.setAttribute("valor", '0');}
+			if (linha.src == "re.jpg"){linha.setAttribute("valor", '1');}
+			if (linha.src == "mi.jpg"){linha.setAttribute("valor", '2');}
+			if (linha.src == "fa.jpg"){linha.setAttribute("valor", '3');}
+			if (linha.src == "sol.jpg"){linha.setAttribute("valor", '4');}
+			if (linha.src == "la.jpg"){linha.setAttribute("valor", '5');}
+			if (linha.src == "si.jpg"){linha.setAttribute("valor", '6');}
+			count = count+1;
+  }
+}
+}
+function abre(elemento) {
+	elemento.style.opacity = "1";
+	elemento.style.pointerEvents = 'none';
+	if (primeiraCarta == null) {
+		primeiraCarta = elemento;
+	}
+	else {
+		segundaCarta = elemento;
+		setTimeout(verifica, 500);
+	}
+}
+function verifica() {
+	var valor1 = primeiraCarta.getAttribute("valor");
+	var valor2 = segundaCarta.getAttribute("valor");
+	if (valor1 == valor2) {
+		acertos += 1;
+		primeiraCarta.style.opacity = "0.5";
+		primeiraCarta.style.background='black';
+		segundaCarta.style.opacity = "0.5";
+
+	}
+	else {
+		primeiraCarta.style.opacity = "0";
+		primeiraCarta.style.pointerEvents = 'auto';
+		segundaCarta.style.opacity = "0";
+		segundaCarta.style.pointerEvents = 'auto';
+	}
+	primeiraCarta = null;
+	segundaCarta = null;
+	if (acertos == numPares) {
+		alert("O jogo terminou.");
+		window.location.href = '';
+	}
+}
+</script>
+<meta charset="utf-8">
+<title>Jogo da Memória</title>
+</head>
+<body>
+	<div class="divisao">
+	<!-- <h2 style='color:white;'>Jogo da Memória</h2>
+	<p>pontos</p><p id='pontos'></p> -->
+<div class="divisao2">
+
+<button  class ='botao' onclick=init(this) id="bot" value="0" name="botao">CLIQUE PARA COMEÇAR O JOGO</button>
+</div>
+<div class="esconde" id="escondido">
+{%load static%}
+	<table class="tabela">
+		<tr class = 'ted'>
+
+			<td><img src="a.png" id=1   class="carta" onclick="abre(this)"></td>
+			<td><img src="b.png" id=2   class="carta" onclick="abre(this)"></td>
+			<td><img src="b.png" id=3   class="carta" onclick="abre(this)"></td>
+			<td><img src="c.png" id=4   class="carta" onclick="abre(this)"></td>
+			<td><img src="a.png" id=5  valor="5" class="carta" onclick="abre(this)"></td>
+			<td><img src="a.png" id=6  valor="6" class="carta" onclick="abre(this)"></td>
+			<td><img src="b.png" id=7  class="carta" onclick="abre(this)"></td>
+		</tr>
+		<tr>
+			<td><img src="c.png" id=8  class="carta" onclick="abre(this)"></td>
+			<td><img src="c.png" id=9  class="carta" onclick="abre(this)"></td>
+			<td><img src="b.png" id=10  class="carta" onclick="abre(this)"></td>
+			<td><img src="c.png" id=11  class="carta" onclick="abre(this)"></td>
+			<td><img src="c.png" id=12  class="carta" onclick="abre(this)"></td>
+			<td><img src="b.png" id=13  class="carta" onclick="abre(this)"></td>
+			<td><img src="c.png" id=14  class="carta" onclick="abre(this)"></td>
+
+
+	</table>
+</div>
+</div>
+</body>
+</html>
+{%endblock%}

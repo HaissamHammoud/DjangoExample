@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+  div{
+    background-color: grey;
+    border-radius: 10px;
+  }
+  .btn-group .button{
+    background-color: #4CAF50; /* Green */
+    border: 2px solid green;
+    border-radius: 10px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+    position:bottom;
+    width:25%;
+  }
+
+.btn-group .button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.btn-group .button:hover {
+  background-color: #3e8e41;
+}
+  </style>
+
+  <body>
+  <div >
+
+      <h1>Estacionamento </h1>
+
+
+  </div>
+    <div class="btn-group">
+      <button onclick="window.location.href = '/.';" class="button" name="button" >voltar</button>
+      <button onclick="window.location.href = '/estacionamento/entrance';" class="button" name="button">Entrada</button>
+      <button onclick="window.location.href = '/estacionamento/exit';" class="button" name="button">Saida</button>
+      <button  class="button" name="button">.</button>
+
+    </div>
+    <div class="">
+
+      {%block content %}
+
+
+      {% endblock%}
+    </div>
+</body>
+
+</html>
