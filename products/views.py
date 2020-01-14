@@ -23,7 +23,7 @@ def product_create_view(request):
 def top_products(request):
     obj = {}
     try:
-        product = Product.objects.order_by('-id')[0:5]
+        product = Product.objects.order_by('-id')[0:6]
         print(obj[i])
     except:
         print("ola")
