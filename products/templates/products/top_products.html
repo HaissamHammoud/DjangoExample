@@ -39,20 +39,39 @@ div {
   background-color: #f2f2f2;
   padding: 20px;
 }
+.black{
+  background-color: #4CAF50; /* Green */
+  border-radius:1px;
+  color: white;
+
+  text-align: center;
+  text-decoration: none;
+  font-size: 10px;
+  cursor: pointer;
+  float:right;
+  overflow: auto;
+  position:bottom;
+  width:33.3%;
+  box-sizing: border-box;
+
+}
 </style>
 
     </style>
   </head>
   <body>
-    {%for i in object%}
     <div class="">
+    {%for i in object%}
 
+      <div class="black">
 
       <h1 style='color:red'>{{i.title}}</h1>
       <h2>descrição:</h2>
       <h3>Price: {{i.price}}</h3>
       <h4>Disponibilidade:</h4>
       <p>{%if i.stock == 0%}fora de estoque{%else%}Em estoque{%endif%}</p>
+      <button type="button" name="button" onclick = "window.location.href = '{%url 'loja:detail' i.id%}';">detalhe do produto</button>
+    </div>
     {%endfor%}
   </div>
   </body>

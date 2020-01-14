@@ -22,18 +22,16 @@ def product_create_view(request):
 
 def top_products(request):
     obj = {}
-    for i in range(3):
-        if(Product.objects.get(id=i+1)):
-            obj[i] = Product.objects.get(id=i+1)
-            print(obj[i])
-        else:
-            break
+    try:
+        product = Product.objects.order_by('-id')[0:5]
+        print(obj[i])
+    except:
+        print("ola")
+
     context = {
-    'object': [obj[0],obj[1],obj[2]]
+    'object': product
     }
-
-    context['object'].append(Product.objects.get(id=4+1))
-
+    print(product)
 
     return render(request,"products/top_products.html", context)
 

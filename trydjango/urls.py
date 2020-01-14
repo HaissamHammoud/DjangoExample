@@ -23,11 +23,12 @@ urlpatterns = [
     path('', home ,name = "home"),
     path('admin/', admin.site.urls),
 
-    path('loja/product/detail/<int:my_id>',product_dynamic_view),
-    path('loja/menu', loja_view,name = 'menu'),
-    path('loja/product/create/', product_create_view, name = 'Create'),
-    path('loja/product/top_products/',top_products, name = 'Create'),
+    # path('loja/product/detail/<int:my_id>',product_dynamic_view),
+    # path('loja/menu', loja_view,name = 'menu'),
+    # path('loja/product/create/', product_create_view, name = 'Create'),
+    # path('loja/product/top_products/',top_products, name = 'Create'),
     path('memoria/',memoria_view, name = 'jogo'),
     path('estacionamento/', include('estacionamento.urls')),
+    path('loja/', include('products.urls')),
 
 ]

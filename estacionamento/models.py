@@ -9,5 +9,12 @@ class Car(models.Model):
     out_date    = models.DateTimeField(null = True, default = None)
     presente    = models.BooleanField(default = True)
 
+
+    def pagamento(self , delta):
+        valor = delta.days * 24
+        valor = valor + int(delta.seconds/3600)
+        return valor
+
+
 class Caixa(models.Model):
     cash        = models.DecimalField(max_digits = 4,decimal_places = 2)

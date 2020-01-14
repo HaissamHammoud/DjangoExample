@@ -1,0 +1,67 @@
+
+{%extends 'menu.html'%}
+
+
+{%block content%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+
+
+      input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+
+      }
+
+          .price{
+            color:red;
+          }
+  </style>
+  </head>
+  <body>
+    <h1>total de horas:</h1>
+    <h3>{{total_horas}}</h3>
+    <h1>permanencia total:</h1>
+    <h3>{{permanencia}}</h3>
+    <h2>horario de entrada:</h2>
+    <h3>{{objeto.in_date}}</h3>
+    <h1>pagamento</h1>
+    <h3>valor por hora {{valor_hora}} </h3>
+    <h2 class = 'price'>preco final:  R$ {{price}}</h2>
+    <div class="">
+      <form class="" action="index.html" method="post">
+
+      </form>
+    </div>
+
+  </body>
+</html>
+{%endblock%}
