@@ -17,4 +17,4 @@ class Car(models.Model):
 
 
 class Caixa(models.Model):
-    cash        = models.DecimalField(max_digits = 4,decimal_places = 2)
+    cash        =  models.DecimalField(max_digits=5, decimal_places=2)

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect,Http404, HttpResponse
-from .models import Car
+from .models import Car, Caixa
 from .forms import CarForms , CarIdForm
 from django.urls import reverse
 from django.template import loader
@@ -75,4 +75,19 @@ def pagamento(request, my_id):
         'valor_hora': valor_hora,
     }
     return render(request, 'carros/pagamento.html', context)
+
+def confirmar_pagamento(request , my_id):
+    obj = Car.objects.get(id = my_id)
+    obj.delete()
+    return render(request, 'menu.html')
+
+def list_all(request):
+    obj = Car.objects.all()
+    print(obj)
+    context = {
+    'cars' : obj,
+    }
+
+    return render(request, 'carros/listall.html', context)
+
     #por hora usarei um valor fixo de pagamento apenas para efetuar o sistema

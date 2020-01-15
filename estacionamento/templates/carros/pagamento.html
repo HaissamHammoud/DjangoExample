@@ -56,10 +56,7 @@
     <h1>pagamento</h1>
     <h3>valor por hora {{valor_hora}} </h3>
     <h2 class = 'price'>preco final:  R$ {{price}}</h2>
-    <div class="">
-      <form class="" action="index.html" method="post">
-
-      </form>
+    <button type="button" name="button" onclick = "window.location.href = '{%url 'estacionamento:confirm' objeto.id%}';">Efetuar Pagamento</button>
     </div>
 
   </body>

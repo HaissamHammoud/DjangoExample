@@ -1,0 +1,78 @@
+
+{%extends 'menu.html'%}
+
+
+{%block content%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+
+
+      input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+
+
+          .tabela .linha{
+            background-color: #4CAF50; /* Green */
+            border: 1px solid green;
+            border-color:green;
+
+            border-radius: 4px;
+            color: white;
+            margin: 0px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            float: left;
+            position:bottom;
+            width:100%;
+          }
+
+        .tabela .linha:not(:last-child) {
+          border-right: none; /* Prevent double borders */
+
+        }
+
+        .tabela .linha:hover {
+          background-color: #3e8e41;
+        }
+  </style>
+  </head>
+  <body>
+
+  <div class="tabela">
+
+{%for i in cars%}
+ <h3 class = 'linha'>ID: {{i.id}} ----  Placa: {{i.placa}}  --- Modelo: {{i.modelo}} --- Entrada: {{i.in_date}}</h3>
+ {%endfor%}
+
+</div>
+
+  </body>
+</html>
+{%endblock%}
