@@ -17,8 +17,9 @@ import dj_database_url
 import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
+POSTGRES_USER = os.environ['POSTGRES_USER']
+POSTGRES_PASSWORD = os.environ['POSTGRES_PASSWORD']
+POSTGRES_DB = os.environ['POSTGRES_DB']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -87,10 +88,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-         'NAME' : 'portdata',
-        'USER': 'postgres',
-        'PASSWORD': '6054520',
-        'HOST' : '127.0.0.1',
+        'NAME' : POSTGRES_DB,
+        'USER':  POSTGRES_USER,
+        'PASSWORD':POSTGRES_PASSWORD,
+        'HOST' : 'db',
         'PORT' : '5432',
     }
 }
